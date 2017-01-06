@@ -1,0 +1,79 @@
+/*去掉内外边距*/
+html,body,div,ol,ul,li,p,span,canvas,img,a,button,hr{margin:0;padding:0;}
+
+/*设置全局字体默认大小*/
+/*html{ background:#fff; color:#000; font-size:10px; font-family: myfont, Verdana, Arial, Helvetica, sans-serif; }*/
+html{ font-size:10px; }
+
+/*禁止选择文本*/
+body{
+	-moz-user-select:none;/*火狐*/
+	-webkit-user-select:none;/*webkit浏览器*/
+	-ms-user-select:none;/*IE10*/
+	-khtml-user-select:none;/*早期浏览器*/
+	user-select:none;
+	background:#fff;
+	color:#000;
+}
+
+/*去掉li标签的圆点*/
+ol,ul,li{list-style:none;}
+
+/*去掉点击时产生的虚框*/
+a,button{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+
+/*去掉img的边距，设置垂直居中*/
+img{border:0;vertical-align:middle}
+/*设置table的边距为合并*/
+table{border-collapse:collapse;border-spacing:0}
+
+/*去掉a标签的下划线，hover时才有*/
+a{color:#555; text-decoration:none;outline:none;}
+/*a:hover{text-decoration:underline;}*/
+a:active {color: #0000FF}
+
+/*去掉点击时的边距*/
+a,input,button{outline:none;}
+
+/*浮动*/
+.fl{float:left;}
+.fr{float:right;}
+
+/*清除浮动*/
+.clearfix:after{content: ""; display: block; height:0; clear:both; visibility: hidden;}
+.clearfix {zoom:1;}
+
+
+.btn-group{
+	border-radius: 0.5rem;
+	border: 1px solid beige;
+	display: inline-block;
+}
+.btn-group .btn{
+	border: none;
+	border-right: 1px solid beige;
+	border-radius: 0;
+	float: left;
+}
+
+.btn-group .btn:last-child{
+	border-right: none;
+}
+
+.btn {
+display: inline-block;
+font-weight: normal;
+font-size: 1.4rem;
+line-height: 1.4rem;
+padding: 0.6rem 1.2rem;
+text-align: center;
+white-space: nowrap;
+vertical-align: middle;
+-ms-touch-action: manipulation;
+touch-action: manipulation;
+cursor: pointer;
+border: 1px solid beige;
+border-radius: 0.5rem;
+background: none;
+color: beige;
+}
