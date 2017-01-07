@@ -220,6 +220,7 @@
 <script type="text/javascript" src="{{ asset('/Js/jquery.cookie.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/layer/layer.js') }}"></script>
 <script>
+    $.cookie('sw',window.screen.width);
     @if($errors->has('name'))
     layer.msg("  {{ $errors->first('name') }} (ง •̀_•́)ง", {icon: 5});
     @elseif($errors->has('email'))
