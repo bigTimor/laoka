@@ -102,17 +102,14 @@ h1,.h1,h2,.h2,h3,.h3{
 }
 
 #afui.ios .afPopup {
-    border: solid 2px #fff;
-    -webkit-box-shadow: 0px 4px 6px #555, 0 0 20px rgba(0,0,0,0.5);
-    -webkit-border-radius: 10px;
-    border-radius:10px;
+    border: 0px;
     padding: 0;
-    background: #1b294b;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#626c82), to(#1b294b));
+    background: #FFFfff;
 }
 
 #afui.ios .afPopup >* {
-    color:white;
+    font-size: 1.2em;
+    color:#a8a8a8;
 }
 
 #afui.ios .afPopup>HEADER{
@@ -127,13 +124,20 @@ h1,.h1,h2,.h2,h3,.h3{
 }
 
 #afui.ios .afPopup>FOOTER>A{
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#626c82), to(#1b294b));
-    color:white;
+    color:#c81532;
+    font-size: 1.3em;
+    background-color: #FFFfff;
+    font-weight: 400;
+    border-radius: 20px;
+    padding: 4px 12px;
 }
 
 #afui.ios .afPopup>FOOTER>A#cancel{
+background-color: #c81532;
+    color: #FFFfff;
     width:120px;
     margin-left:10px;
+    border: 1px solid #c81532;
 }
 
 #afui.ios .afPopup>FOOTER>A#action{
@@ -148,25 +152,20 @@ h1,.h1,h2,.h2,h3,.h3{
 }
 
 #afui.ios #af_actionsheet {
-    background:#595c61;
+    background:#FFFfff;
+    width: 100%;
     color:inherit;
 }
 
 #afui.ios #af_actionsheet a{
-    border-radius:10px;
-    -webkit-border-radius:10px;
-    border:3px solid #111;
-    background:#eee;
-    background: linear-gradient(to bottom, #fff 0%,#ccc 100%);
-    color:#111;
-    text-shadow:0 1px 0 #fff;
+    border:0px;
+    background:#FFFfff;
+    color:#b0b0b0;
 }
 
 #afui.ios #af_actionsheet a.cancel{
-    background:#333;
-    background: linear-gradient(to bottom, #666 0%,#333 100%);
+    background:#bd1c21;
     color:white;
-    text-shadow:0 -1px 0 #000;
 }
 
 #afui.ios #af_actionsheet a.red{

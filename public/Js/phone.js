@@ -25,6 +25,11 @@ function loadLf() {
     lf.goin();
 }
 
+//随手量加载事件
+function loadSsl() {
+    ssl.goin();
+}
+
 // 显示客户列表
 function show_customer_list() {
     var a = $('.customer_classify_check_on').val();
@@ -50,7 +55,6 @@ function show_customer_list() {
     }
 }
 
-
 //客户列表滑动事件
 function del_customer() {
     $('.is_del_customer').removeClass('is_del_customer');
@@ -58,10 +62,10 @@ function del_customer() {
 }
 
 //客户列表点击事件
-function customer_click() {
+function customer_click(event) {
     var a = $('.is_del_customer').val();
     var b = $(this).val();
-    if(a && a != b){
+    if(a > -1){
         $('.is_del_customer').removeClass('is_del_customer');
     }else{
         var source = $('.customer_classify_check_on').val();
@@ -75,6 +79,7 @@ function customer_click() {
         }
         for(var i=0;i<data.length;i++){
             if(data[i].id == b){
+                console.log(data[i]);
                 var sex = new Array();
                 sex[0] = '女';
                 sex[1] = '男';
@@ -129,10 +134,27 @@ function go_editor_button() {
     }
 }
 
-//提交编辑客户信息
-function edit_customer_do() {
-    
+//添加临时客户 sex change事件
+$('input:radio[name=sex]').change(function () {
+    $('.sex_true').hide();
+    $(this).parent().find('.sex_true').show();
+});
+
+//添加临时客户,选择预算
+function choose_dudget() {
+    $("#afui").actionsheet('<a  class="cancel">选择装修预算</a><div class="choose_budget"><label><input type="radio" name="budget" value="1">5-8万以下</label> <label><input type="radio" name="budget" value="2">8-12万</label> <label><input type="radio" name="budget" value="3">12-18万</label> <label><input type="radio" name="budget" value="4">18-25万</label> <label><input type="radio" name="budget" value="5">其它</label></div>');
+    $('input[name=budget]').on('change',function () {
+        $('.budget').text($(this).parent().text());
+        $('input[name=hidden_budget]').val($(this).val());
+    })
 }
+
+//选择风格下一步
+function next_measure() {
+    var style_id = $('.pitch_on').val();
+    show_collocation(style_id);
+}
+
 
 //改变footer栏图片
 function change_footer_img() {
@@ -140,4 +162,15 @@ function change_footer_img() {
     $('#navbar_scheme>img').attr('src','../Images//f_scheme.png');
     $('#navbar_activity>img').attr('src','../Images//f_activity.png');
     $('#navbar_private>img').attr('src','../Images//f_private.png');
+}
+
+//客户详细信息页面 进入量尺/需求确认按钮点击事件
+function portal() {
+    var val = $(this).text();
+    if(val == '需求核对'){
+        $.ui.loadContent('#measure_log',false,false,'slide');
+    }else{
+        $.ui.loadContent('#go_measurement',false,false,'slide');
+        info.customer_id = $('input[name=customer_id]').val();
+    }
 }

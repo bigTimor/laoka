@@ -1,6 +1,38 @@
-@extends('layouts.jqmobi')
-@section('css')
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+<head>
+    <script>
+        (function() {
+            if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement("style");
+                msViewportStyle.appendChild(
+                    document.createTextNode("@-ms-viewport{width:auto!important}")
+                );
+                document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+            }
+        })();
+    </script>
+
+    <title>劳卡量尺宝</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Jqmobi/css/icons.css') }}" />
+
+
     <style>
+        @font-face {
+            font-family: 'MyNewFont';   /*字体名称*/
+            src: url("{{ asset('dist/fonts/GBK.TTF') }}");       /*字体源文件*/
+        }
+        *{
+            font-family: MyNewFont;
+        }
+
         #header{
             background-image: url("{{ asset('Images/banner.png') }}");
             background-size:cover;
@@ -10,18 +42,130 @@
         }
         .detailed{
             width: 67%;
-            height: 100%;
             position:absolute;
             right: 0px;
+            height: 100%;
             background-image: url("{{ asset('Images/bg.png') }}");
             background-size:cover;
+            overflow: auto;
         }
         .right,.full_screen,.choose,.private_right,.add_customer_interface,.collocation_album_body,.directory,.design_explain{
             background-image: url("{{ asset('Images/bg.png') }}");
         }
+        #header_lf .procedurea{
+            color: #db3740;
+            background-color: beige;
+            background-image: url("{{ asset('Images/UIkit.png') }}");
+        }
     </style>
-@endsection
-@section('header')
+    <link rel="stylesheet" type="text/css" href="{{ asset('Css/bootstrap.min.css') }}"  />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Css/style.css') }}"  />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Jqmobi/css/main.css') }}"  />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Jqmobi/css/lists.css') }}"  />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Jqmobi/css/appframework.css') }}"  />
+
+    {{--<link rel="stylesheet" type="text/css" href="{{ asset('Jqmobi/css_phone/forms.css') }}"  />--}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('Jqmobi/css/buttons.css') }}"  />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Jqmobi/css/badges.css') }}"  />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Jqmobi/css/grid.css') }}"  />
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('Jqmobi/plugins/css/af.actionsheet.css') }}"  />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Jqmobi/css/af.popup.css') }}"  />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Jqmobi/plugins/css/af.scroller.css') }}"  />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Jqmobi/plugins/css/af.selectBox.css') }}"  />
+
+
+    <link rel="stylesheet" href="{{ asset('lf/css/init.css') }}">
+    <link rel="stylesheet" href="{{ asset('lf/css/styles.css') }}">
+
+    <!--ipad端样式-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('Css/index_ipad.css') }}"  />
+
+    <script src="{{ asset('lf/js/jquery-1.10.2.js') }}"></script>
+
+    <script src="{{ asset('lf/js/objs.js') }}"></script>
+    <script src="{{ asset('lf/js/main.js') }}"></script>
+    <script src="{{ asset('lf/js/lf.js') }}"></script>
+    <script src="{{ asset('lf/js/lf_wall.js') }}"></script>
+    <script src="{{ asset('lf/js/lf_door.js') }}"></script>
+    <script src="{{ asset('lf/js/lf_furnit.js') }}"></script>
+
+    <script src="{{ asset('lf/js/ssl.js') }}"></script>
+    <script src="{{ asset('lf/js/ssl_line.js') }}"></script>
+    <script src="{{ asset('lf/js/ssl_text.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('/Jqmobi/jq.appframework.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/ui/appframework.ui.js') }}"></script>
+
+
+
+
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/plugins/af.actionsheet.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/plugins/af.css3animate.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/plugins/af.passwordBox.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/plugins/af.scroller.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/plugins/af.selectBox.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/plugins/af.touchEvents.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/plugins/af.touchLayer.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/af.popup.js') }}"></script>
+
+    <!-- <script type="text/javascript" charset="utf-8" src="./ui/transitions/all.js"></script> -->
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/ui/transitions/fade.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/ui/transitions/flip.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/ui/transitions/pop.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/ui/transitions/slide.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/ui/transitions/slideDown.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/ui/transitions/slideUp.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('Jqmobi/plugins/af.slidemenu.js') }}"></script>
+
+
+    <script type="text/javascript">
+        /* This function runs once the page is loaded, but intel.xdk is not yet active */
+        //$.ui.animateHeaders=false;
+        var search=document.location.search.toLowerCase().replace("?","");
+        //if(!search)
+        $.ui.useOSThemes=true;
+        if(search.length>0) //Android fix has too many buggy issues on iOS - can't preview with $.os.android
+        {
+
+            $.ui.useOSThemes=true;
+            if(search=="win8")
+                $.os.ie=true;
+            $.ui.ready(function(){
+                $("#afui").get(0).className='login';
+            });
+        }
+
+        var webRoot = "./";
+        $.ui.openLinksNewTab = false;
+        $.ui.splitview=false;
+
+        /* This code is used to run as soon as intel.xdk activates */
+        var onDeviceReady = function () {
+            intel.xdk.device.setRotateOrientation("portrait");
+            intel.xdk.device.setAutoRotate(false);
+            webRoot = intel.xdk.webRoot + "";
+            //hide splash screen
+            intel.xdk.device.hideSplashScreen();
+            $.ui.blockPageScroll(); //block the page from scrolling at the header/footer
+        };
+        document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
+
+        function showHide(obj, objToHide) {
+            var el = $("#" + objToHide)[0];
+
+            if (obj.className == "expanded") {
+                obj.className = "collapsed";
+            } else {
+                obj.className = "expanded";
+            }
+            $(el).toggle();
+
+        }
+    </script>
+</head>
+<body>
+<div id="afui" class="">
     <header id="header">
         <span style="position: absolute;right: 3%;text-align: right;top:30px">
                 <a class="voice" href="javascript:">
@@ -91,7 +235,7 @@
             <img class="header_logo_secondary" src="{{ asset('Images/logo_white.png') }}">
             <span>个人中心</span>
             <br />
-            <a class="logout" href="javascript:" onclick="logout()">
+            <a class="logout" data-ignore="True" href="{{ url('/logout') }}">
                 <img src="{{ asset('Images/logout.png') }}"> 退出登录
             </a>
         </div>
@@ -99,15 +243,13 @@
     <header id="header_lf" class="header_lf">
         <a id="backButton" class="button" style="visibility: visible;position: absolute;top:8px;"> </a>
         <div class="btn-group">
-            <button id="stage0" class="btn procedure procedurea">画墙</button>
-            <button id="stage1" class="btn procedure">门窗</button>
-            <button id="stage2" class="btn procedure">量尺</button>
-            <button id="stage3" class="btn procedure">家具</button>
+            <button id="stage0" class="btn procedure procedurea"></button>
+            <button id="stage1" class="btn procedure"></button>
+            <button id="stage2" class="btn procedure"></button>
+            <button id="stage3" class="btn procedure"></button>
         </div>
         <button id="lf_next" class="btn">下一步</button>
     </header>
-@endsection
-@section('content')
     <div id="content">
         <div class="panel" id="measure" selected="true" data-load="loadeCustomer" data-header="header_measure">
             <div class="customer">
@@ -115,15 +257,17 @@
                     <img class="search_img" src="{{ asset('Images/search.png') }}">
                     <input name="search" type="search" placeholder="输入关键词搜索" />
                 </div>
-                <ul class="customer_list">
-                </ul>
+                <div style="width: 97%;height: 79%;overflow: auto;">
+                    <ul class="customer_list" id="customer_list">
+                    </ul>
+                </div>
                 <div class="add_customer">
                     <a href="#add_customer">╋ 添加临时客户</a>
                 </div>
             </div>
             <div class="detailed">
                 <div class="data_center">
-                    <a href="#edit_customer">编辑</a>
+                    <a href="javascript:" onclick='layer.msg("暂无权限！", {icon: 5})'>编辑</a>
                     <div class="header_img"><img src=""></div>
                     <div class="data_list">
                         <input type="hidden" value="" name="customer_id">
@@ -284,20 +428,24 @@
                 </div>
             </div>
         </div>
-        <div class="panel" title="活动中心" id="activity" data-load="loadActivity" data-header="header_activity">
-            <div style="width: 100%;text-align: center">
+        <div class="panel" title="活动中心" id="activity" data-load="loadActivity" data-header="header_activity" style="width: 100%;text-align: center;overflow: auto;-webkit-overflow-scrolling:touch;">
+            <div id="activity_body" style="width: 100%;text-align: center;overflow: auto;-webkit-overflow-scrolling:touch;">
+                <a href="#"><img style="width: 100%" src="{{ asset('Images/u5012.gif') }}"></a>
+                <a href="#"><img style="width: 100%" src="{{ asset('Images/u5016.png') }}"></a>
+                <a href="#"><img style="width: 100%" src="{{ asset('Images/u5012.gif') }}"></a>
+                <a href="#"><img style="width: 100%" src="{{ asset('Images/u5016.png') }}"></a>
                 <a href="#"><img style="width: 100%" src="{{ asset('Images/u5012.gif') }}"></a>
                 <a href="#"><img style="width: 100%" src="{{ asset('Images/u5016.png') }}"></a>
             </div>
         </div>
         <div class="panel" title="个人中心" id="private" data-load="loadUser" data-header="header_private">
             <div class="private_left">
-                <ul class="private">
+                <ul class="private" id="p_menu">
                     <li class="relay stage" name="user">
                         <div>
                             <img src="{{ asset('Images/default.png') }}"><br />
                         </div>
-                        <span class="self_name"></span><br />
+                        <span class="self_name"></span>
                         <span class="identity"></span>
                     </li>
                     <li class="relay" name="reset_passowrd"><img src="{{ asset('Images/resetpass.png') }}">修改密码</li>
@@ -312,7 +460,7 @@
                     <li onclick="set_bluetooth()"><img src="{{ asset('Images/bluetooth.png') }}">蓝牙设置</li>
                     <li class="relay"><img src="{{ asset('Images/clear.png') }}">清除缓存</li>
                     <li class="relay"><img src="{{ asset('Images/update.png') }}">版本更新</li>
-                    <li><img src="{{ asset('Images/meassage.png') }}">服务热线：<span class="meassage_telephone">400 888 888</span></li>
+                    <li><img src="{{ asset('Images/meassage.png') }}"><a href="telL:400 888 888">服务热线：<span class="meassage_telephone">400 888 888</span></a></li>
                 </ul>
             </div>
             <div class="private_right">
@@ -323,7 +471,7 @@
                             <img src="{{ asset('Images/default.png') }}"/>
                         </div>
                         <h1>个人信息 </h1>
-                        <span class="edit_button"><img src="{{ asset('Images/editor.png') }}"> 编辑</span>
+                        <span class="edit_button"><img src="{{ asset('Images/editor.png') }}" onclick="        alert($('#p_menu').parent().parent().height());"> 编辑</span>
                         <hr />
                         <table>
                             <tr>
@@ -413,84 +561,86 @@
             </div>
         </div>
         <div class="panel" title="添加临时客户" id="add_customer" data-footer="none">
-            <form method="post" action="{{ url('/add_customer_do') }}" onsubmit=" return add_customer_do()" enctype="multipart/form-data">
-                {{ csrf_field() }}
             <div class="add_customer_interface">
-                <div class="add_interface">
-                    <label>
-                    <div class="default_header">
-                            <input type="file" name="picture" id="header_img" onchange="upload_header()" >
-                            <img src="{{ asset('Images/default.png') }}">
+                <form method="post" action="{{ url('/add_customer_do') }}" onsubmit=" return add_customer_do()" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="add_interface">
+                        <label>
+                            <div class="default_header">
+                                <input type="file" name="picture" id="header_img" onchange="upload_header()" >
+                                <img src="{{ asset('Images/default.png') }}">
+                            </div>
+                        </label>
+                        <div class="customer_form">
+                            <span class="add_username">姓名：<input name="username" type="text" value=" "></span>
+                            <span class="add_sex">性别：
+                                <label class="sex_man"><input name="sex" type="radio" value="1" checked="true">男<img class="sex_img_man" src="{{ asset('Images/sex@2x.png') }}"><img class="sex_true" src="{{ asset('Images/true.png') }}"></label>
+                                <label class="sex_woman"><input name="sex" type="radio" value="0">女<img class="sex_img_woman" src="{{ asset('Images/sex@2x_34.png') }}"><img class="sex_true" style="display: none" src="{{ asset('Images/true.png') }}"></label>
+                            </span>
+                            <span class="add_address">地址：<input name="address" type="text"></span>
+                            <span class="add_telephone">电话：<input name="telephone" type="text"></span>
+                            <span class="add_wechat">微信：<input name="wechat" type="text"></span>
+                            <span class="add_budget">装修预算：<br />
+                                <label class="budget_true">5-8万以下<input type="radio" name="budget" value="1" checked="true"></label>
+                                <label>8-12万<input type="radio" name="budget" value="2"></label>
+                                <label>12-18万<input type="radio" name="budget" value="3"></label>
+                                <label>18-25万<input type="radio" name="budget" value="4"></label>
+                                <label>其它<input type="radio" name="budget" value="5"></label>
+                            </span>
+                            <span class="add_scheme_time">看方案时间：<input name="scheme_time" type="text"></span>
+                        </div>
                     </div>
-                    </label>
-                    <div class="customer_form">
-                        <span class="add_username">姓名：<input name="username" type="text"></span>
-                        <span class="add_sex">性别：
-                            <label class="sex_man"><input name="sex" type="radio" value="1" checked="true">男<img class="sex_img_man" src="{{ asset('Images/sex@2x.png') }}"><img class="sex_true" src="{{ asset('Images/true.png') }}"></label>
-                            <label class="sex_woman"><input name="sex" type="radio" value="0">女<img class="sex_img_woman" src="{{ asset('Images/sex@2x_34.png') }}"><img style="display: none" class="sex_true" src="{{ asset('Images/true.png') }}"></label>
-                        </span>
-                        <span class="add_address">地址：<input name="address" type="text"></span>
-                        <span class="add_telephone">电话：<input name="telephone" type="text"></span>
-                        <span class="add_wetchat">微信：<input name="wetchat" type="text"></span>
-                        <span class="add_budget">装修预算：<br />
-                            <label class="budget_true">5-8万以下<input type="radio" name="budget" value="1" checked="true"></label>
-                            <label>8-12万<input type="radio" name="budget" value="2"></label>
-                            <label>12-18万<input type="radio" name="budget" value="3"></label>
-                            <label>18-25万<input type="radio" name="budget" value="4"></label>
-                            <label>其它<input type="radio" name="budget" value="5"></label>
-                        </span>
-                        <span class="add_scheme_time">看方案时间：<input name="scheme_time" type="text"></span>
+                    <div class="add_customer_button">
+                        <button type="submit">保存</button>
+                        <button type="reset">取消</button>
                     </div>
-                </div>
-                <div class="add_customer_button">
-                    <button type="submit">保存</button>
-                    <button type="reset">取消</button>
-                </div>
+                </form>
             </div>
-            </form>
         </div>
         <div class="panel" title="编辑客户信息" id="edit_customer" data-load="loadeEditor">
             <form method="post" action="{{ url('/edit_customer_do') }}" onsubmit=" return add_customer_do()" enctype="multipart/form-data">
                 {{ csrf_field() }}
-            <div class="add_customer_interface">
-                <div class="add_interface">
-                    <label>
-                        <div class="default_header">
-                            <input type="file" name="picture" id="header_img" onchange="upload_header()" >
-                            <img src="{{ asset('Images/default.png') }}">
-                        </div>
-                    </label>
-                    <div class="customer_form">
-                        <span class="add_username">姓名：<input name="edit_username" type="text"></span>
-                        <span class="add_sex">性别：
+                <div class="add_customer_interface">
+                    <div class="add_interface">
+                        <label>
+                            <div class="default_header">
+                                <input type="file" name="picture" id="header_img" onchange="upload_header()" >
+                                <img src="{{ asset('Images/default.png') }}">
+                            </div>
+                        </label>
+                        <div class="customer_form">
+                            <span class="add_username">姓名：<input name="edit_username" type="text"></span>
+                            <span class="add_sex">性别：
                             <label class="sex_man"><input name="edit_sex" type="radio" value="1" checked="true">男<img class="sex_img_man" src="{{ asset('Images/sex@2x.png') }}"><img style="display: none" class="sex_true" src="{{ asset('Images/true.png') }}"></label>
                             <label class="sex_woman"><input name="edit_sex" type="radio" value="0">女<img class="sex_img_woman" src="{{ asset('Images/sex@2x_34.png') }}"><img style="display: none" class="sex_true" src="{{ asset('Images/true.png') }}"></label>
                         </span>
-                        <span class="add_address">地址：<input name="edit_address" type="text"></span>
-                        <span class="add_telephone">电话：<input name="edit_telephone" type="text"></span>
-                        <span class="add_wetchat">微信：<input name="edit_wetchat" type="text"></span>
-                        <span class="add_budget">装修预算：<br />
+                            <span class="add_address">地址：<input name="edit_address" type="text"></span>
+                            <span class="add_telephone">电话：<input name="edit_telephone" type="text"></span>
+                            <span class="add_wechat">微信：<input name="edit_wechat" type="text"></span>
+                            <span class="add_budget">装修预算：<br />
                             <label>5-8万以下<input type="radio" name="edit_budget" value="1"></label>
                             <label>8-12万<input type="radio" name="edit_budget" value="2"></label>
                             <label>12-18万<input type="radio" name="edit_budget" value="3"></label>
                             <label>18-25万<input type="radio" name="edit_budget" value="4"></label>
                             <label>其它<input type="radio" name="edit_budget" value="5"></label>
                         </span>
-                        <span class="add_scheme_time">看方案时间：<input name="edit_scheme_time" type="text"></span>
+                            <span class="add_scheme_time">看方案时间：<input name="edit_scheme_time" type="text"></span>
+                        </div>
+                    </div>
+                    <div class="add_customer_button">
+                        <button type="submit">保存</button>
+                        <button type="button" onclick="$.ui.loadContent('#measure',false,false,'slide')">取消</button>
                     </div>
                 </div>
-                <div class="add_customer_button">
-                    <button type="submit">保存</button>
-                    <button type="button" onclick="$.ui.loadContent('#measure',false,false,'slide')">取消</button>
-                </div>
-            </div>
             </form>
         </div>
         <div class="panel" title="录音数据" id="recording">
             <div class="private_left">
                 <ul class="private">
                     <li class="relay_data stage" name="user">
-                        <img src="{{ asset('Images/u116.png') }}"><br />
+                        <div>
+                            <img src="{{ asset('Images/default.png') }}"><br />
+                        </div>
                         <span class="self_name"></span><br />
                         <span class="identity"></span>
                     </li>
@@ -535,7 +685,9 @@
             <div class="private_left">
                 <ul class="private">
                     <li class="relay_data stage" name="user">
-                        <img src="{{ asset('Images/u116.png') }}"><br />
+                        <div>
+                            <img src="{{ asset('Images/default.png') }}"><br />
+                        </div>
                         <span class="self_name"></span><br />
                         <span class="identity"></span>
                     </li>
@@ -589,7 +741,7 @@
         <div class="panel" title="客户名" id="measure_log" data-load="loadMeasure_log" data-footer="none">
             <div class="measure_log_body">
                 <h1 style="background-color: #FFFFFF;border: 0px;height: 76px;padding-top: 36px;;font-size: 1.4em;padding-left:5%">量尺记录:</h1>
-                <ul>
+                <ul id='room_size'>
                     <li>
                         <div class="measure_picture">
                             <img src="{{ asset('Images/u521.jpg') }}">
@@ -612,7 +764,7 @@
             </div>
             <div class="measure_log_bottom">
                 <a href="#go_measurement">新建房间</a>
-                <img style="height: 68%;float: right;margin-right: 2%" src="{{ asset('Images/upload_img.png') }}">
+                <img onclick="upload_measure()" style="height: 52px;float: right;margin-right: 2%;margin-top: 4px;margin-bottom: 4px" src="{{ asset('Images/upload_img.png') }}">
             </div>
         </div>
         <div class="panel" title="房间名" id="measure_count" data-load="loadMeasure_count" data-footer="none">
@@ -642,8 +794,22 @@
         </div>
         <div class="panel" data-footer="none" data-load="loadLf" data-header="header_lf" id="lf">
 
+
+
+            <!-- 顶部工具条 -->
+            {{--<div id="lf_stage">--}}
+
+            {{--</div>--}}
+
             <!-- canvas画布 -->
             <div id="canvas1Box">
+                <div id="compassBox">
+                    <p>N</p>
+                    <span id="compassBor">
+					<img id="compass" src="{{ asset('Images/compass.png') }}"/>
+				</span>
+
+                </div>
                 <canvas id="canvas1">您的设备不支持绘画</canvas>
             </div>
 
@@ -655,53 +821,53 @@
 
                     <!-- 左边工具 -->
                     <div class="btn-group">
-                        <button id="lf_move" class="btn">移动</button>
+                        <button id="lf_move" class="btn"></button>
 
                         <!-- 墙体阶段 -->
                         <span id="procedure0" class="btnBox btnBoxa">
-						<button class="btn" id="lf_tool_rect">矩形</button>
-						<button class="btn" id="lf_tool_polygon">T形</button>
-						<button class="btn btna" id="lf_tool_custom">手动</button>
-						<button class="btn" id="lf_tool_empty">清空</button>
-						<button class="btn">录音</button>
-						<button class="btn">图片</button>
-						<button class="btn" id="lf_tool_annul">撤销</button>
+						<button class="btn" id="lf_tool_rect"></button>					<!--矩形工具-->
+						<button class="btn" id="lf_tool_polygon"></button>				<!--T形工具-->
+						<button class="btn btna" id="lf_tool_custom"></button>			<!--手绘工具-->
+						<button class="btn" id="lf_tool_empty"></button>				<!--清空工具-->
+						<button class="btn btn_tape"></button>							<!--录音工具-->
+						<button class="btn btn_photo"></button>							<!--图片工具-->
+						<button class="btn" id="lf_tool_annul"></button>				<!--撤销工具-->
 					</span>
 
                         <!-- 门窗阶段 -->
                         <span id="procedure1" class="btnBox">
-						<button class="btn" id="lf_tool_insertDoor">插入门窗</button>
-						<button class="btn">录音</button>
-						<button class="btn">图片</button>
+						<button class="btn" id="lf_tool_insertDoor">插入门窗</button>		<!--插入门窗工具-->
+						<button class="btn btn_tape"></button>							<!--录音工具-->
+						<button class="btn btn_photo"></button>							<!--图片工具-->
 					</span>
 
                         <!-- 量尺阶段 -->
                         <span id="procedure2" class="btnBox">
-						<button class="btn parm" id="lf_tool_ceiling">天花高</button>
-						<button class="btn parm" id="lf_tool_parm">参数设置</button>
-						<button class="btn parm" id="lf_tool_wallSize">墙体尺寸</button>
-						<button class="btn parm" id="lf_tool_wallLong">墙体总长</button>
-						<button class="btn">录音</button>
-						<button class="btn">图片</button>
+						<button class="btn parm" id="lf_tool_ceiling">天花高</button>		<!--天花高工具-->
+						<button class="btn parm" id="lf_tool_parm">参数设置</button>		<!--门窗参数设置工具-->
+						<button class="btn parm" id="lf_tool_wallSize">墙体尺寸</button>	<!--墙体尺寸工具-->
+						<button class="btn parm" id="lf_tool_wallLong">墙体总长</button>	<!--墙体总长工具-->
+						<button class="btn btn_tape"></button>							<!--录音工具-->
+						<button class="btn btn_photo"></button>							<!--图片工具-->
 					</span>
 
                         <!-- 家具阶段 -->
                         <span id="procedure3" class="btnBox">
-						<button class="btn" id="lf_tool_insertFurnit">插入家具</button>
-						<button class="btn">推荐方案</button>
-						<button class="btn">录音</button>
-						<button class="btn">图片</button>
-						<button class="btn">尺子</button>
-						<button class="btn" id="lf_tool_emptyFurnit">清空</button>
+						<button class="btn" id="lf_tool_insertFurnit"></button>			<!--插入家具工具-->
+						<button class="btn" id="lf_tool_suggest"></button>				<!--推荐方案工具-->
+						<button class="btn btn_tape"></button>							<!--录音工具-->
+						<button class="btn btn_photo"></button>							<!--图片工具-->
+						<button class="btn" id="lf_tool_scale"></button>				<!--尺子工具-->
+						<button class="btn" id="lf_tool_emptyFurnit"></button>			<!--清空家具工具-->
 					</span>
                     </div>
 
                     <!-- 右边工具 -->
                     <div class="btnGroup">
-                        <button class="btn" id="lf_tool_mediacy">居中</button>
-                        <button class="btn" id="lf_tools_ruler">标尺</button>
-                        <button class="btn" id="lf_tools_big">+</button>
-                        <button class="btn" id="lf_tools_Small">-</button>
+                        <button class="btn" id="lf_tools_mediacy"></button>					<!--居中工具-->
+                        <button class="btn" id="lf_tools_ruler"></button>					<!--标尺工具-->
+                        <button class="btn" id="lf_tools_big"></button>						<!--放大工具-->
+                        <button class="btn" id="lf_tools_small"></button>					<!--缩小工具-->
                     </div>
 
                 </div>	<!-- id="lf_tool"结束标签 -->
@@ -709,36 +875,36 @@
                 <!-- 插入门窗弹出框 -->
                 <div id="lf_tools_doors">
                     <i id="lf_tools_doors_arrow"></i>
-                    <span id="lf_tools_PTC" class="tools">普通窗</span>
-                    <span id="lf_tools_PC" class="tools">漂窗</span>
-                    <span id="lf_tools_DKM" class="tools">单开门</span>
-                    <span id="lf_tools_YTM" class="tools">阳台门</span>
-                    <span id="lf_tools_Z" class="tools">柱</span>
-                    <span id="lf_tools_L" class="tools">梁</span>
-                    <span id="lf_tools_QD" class="tools">墙洞</span>
-                    <span id="lf_tools_ZJC" class="tools">转角窗</span>
-                    <span id="lf_tools_ZJPC" class="tools">转角漂窗</span>
-                    <span id="lf_tools_SKM" class="tools">双开门</span>
-                    <span id="lf_tools_TLM" class="tools">推拉门</span>
-                    <span id="lf_tools_ZDM" class="tools">折叠门</span>
+                    <span id="lf_tools_PTC" class="tools"></span>							<!--普通窗-->
+                    <span id="lf_tools_PC" class="tools"></span>							<!--飘窗-->
+                    <span id="lf_tools_DKM" class="tools"></span>							<!--单开门-->
+                    <span id="lf_tools_YTM" class="tools"></span>							<!--阳台门-->
+                    <span id="lf_tools_Z" class="tools"></span>								<!--柱-->
+                    <span id="lf_tools_L" class="tools"></span>								<!--梁-->
+                    <span id="lf_tools_QD" class="tools"></span>							<!--墙洞-->
+                    <span id="lf_tools_ZJC" class="tools"></span>							<!--转角窗-->
+                    <span id="lf_tools_ZJPC" class="tools"></span>							<!--转角飘窗-->
+                    <span id="lf_tools_SKM" class="tools"></span>							<!--双开门-->
+                    <span id="lf_tools_TLM" class="tools"></span>							<!--推拉门-->
+                    <span id="lf_tools_ZDM" class="tools"></span>							<!--折叠门-->
                 </div>
 
                 <!-- 底部工具的弹出菜单 -->
                 <div id="lf_tools_furnits">
                     <p>插入家具</p>
                     <div id="lf_tools_furnits_box">
-                        <span id="lf_tools_WNTB" class="tools">万能图标</span>
-                        <span id="lf_tools_YMWC" class="tools">1.5米床</span>
-                        <span id="lf_tools_YMBC" class="tools">1.8米床</span>
-                        <span id="lf_tools_DYG" class="tools">大衣柜</span>
-                        <span id="lf_tools_DYHYG" class="tools">大圆弧衣柜</span>
-                        <span id="lf_tools_DYHYG2" class="tools">大圆弧衣柜2</span >
-                        <span id="lf_tools_CTG" class="tools">床头柜</span >
-                        <span id="lf_tools_SZT" class="tools">梳妆台</span >
-                        <span id="lf_tools_SZ" class="tools">书桌</span >
-                        <span id="lf_tools_SG" class="tools">书柜</span >
-                        <span id="lf_tools_DSG" class="tools">电视柜</span >
-                        <span id="lf_tools_YJ" class="tools">衣架</span >
+                        <span id="lf_tools_WNTB" class="tools"></span>						<!--万能图标-->
+                        <span id="lf_tools_YMWC" class="tools"></span>						<!--1.5米床-->
+                        <span id="lf_tools_YMBC" class="tools"></span>						<!--1.8米床-->
+                        <span id="lf_tools_DYG" class="tools"></span>						<!--大衣柜-->
+                        <span id="lf_tools_DYHYG" class="tools"></span>						<!--大圆弧衣柜-->
+                        <span id="lf_tools_DYHYG2" class="tools"></span>					<!--大圆弧衣柜2-->
+                        <span id="lf_tools_CTG" class="tools"></span>						<!--床头柜-->
+                        <span id="lf_tools_SZT" class="tools"></span>						<!--梳妆台-->
+                        <span id="lf_tools_SZ" class="tools"></span>						<!--书桌-->
+                        <span id="lf_tools_SG" class="tools"></span>						<!--书柜-->
+                        <span id="lf_tools_DSG" class="tools"></span>						<!--电视柜-->
+                        <span id="lf_tools_YJ" class="tools"></span>						<!--衣架-->
                     </div>
                 </div>
 
@@ -845,31 +1011,65 @@
 
             </div>	<!-- popupUI结束标签 -->
 
+        </div>
+        <div class="panel" id="ssl" data-footer="none" data-load="loadSsl" data-header="none">
+            {{--<div id="ssl" style="display:block">--}}
+            <div id="ssl_box">
+                <img src="{{ asset('Images/1.jpg') }}" id="canvas2Bg">
+                <canvas id="canvas2">您的设备不支持绘制</canvas>
+            </div>
 
+            <div id="ssl_tools">
+                <div id="ssl_items">
+                    <span  id="tools_line" class="tools">直线</span>
+                    <span  id="tools_text" class="tools">文字</span>
+                    <!-- <span  id="tools_addS" class="tools">保存</span>
+                    <span  id="tools_addO" class="tools">打开</span> -->
+                </div>
+                <div id="ssl_edit">
+                    <span class="icoFont icoFont-trash"></span>
+                    <input type="number" class="ssl_text" placeholder="请输入距离，单位：mm" maxlength="6">
+                    <span class="icoFont icoFont-ok"></span>
+                </div>
+            </div>	<!-- id="ssl_tools"结束标签 -->
+            {{--</div>	<!-- id="ssl"结束标签 -->--}}
         </div>
         <div class="panel" data-footer="none" id="design">
             <header style="height:64px">
                 <a id="backButton" class="button" style="visibility: visible;position: absolute;z-index:2"> </a>
                 <h1 style="position: absolute;top:20px;left:0px;position: absolute;top:0px">选择造款类型</h1>
-                <a class="button" style="visibility: visible;position: absolute;right: 20px;top:26px;font-size: 1.4em;z-index:2">确定</a>
+                <a class="button" style="visibility: visible;position: absolute;right: 20px;top:18px;font-size: 1.4em;z-index:2">确定</a>
             </header>
             <div>
-                <div style="width:15%;height:84%;background-color: #bebebe;position:absolute;left:0px;border:0px">
-                    <ul>
-                        <li></li>
+                <div style="width:15%;height:100%;background-color: #f1f1f1;position:absolute;left:0px;border:0px">
+                    <ul class="design_left">
+                        <li>衣柜</li>
+                        <li class="left_pitch_on">衣柜内部结构</li>
+                        <li>衣柜功能件</li>
+                        <li>移门</li>
+                        <li>掩门</li>
                     </ul>
                 </div>
-                <div style="width:85%;height:84%;position:absolute;right:0px;border:0px">
-                    <ul>
-                        <li></li>
+                <div style="width:85%;height:80%;position:absolute;right:0px;border:0px">
+                    <ul class="design_top">
+                        <li class="top_pitch_on">衣柜到顶</li>
+                        <li>上掩下移</li>
+                        <li>顶柜延伸</li>
                     </ul>
                     <div class="design_explain">
-
+                        <ul class="design_right">
+                            <li><img src="{{ asset('Images/u521.jpg') }}"><span class="design_label">款式编号...</span><div class="design_bdge"></div></li>
+                            <li><img src="{{ asset('Images/u521.jpg') }}"></li>
+                            <li><img src="{{ asset('Images/u521.jpg') }}"></li>
+                            <li><img src="{{ asset('Images/u521.jpg') }}"></li>
+                            <li><img src="{{ asset('Images/u521.jpg') }}"></li>
+                            <li><img src="{{ asset('Images/u521.jpg') }}"></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div style="width: 100%;position: absolute;bottom: 40px;height: 10%;padding-top:1%;border-top:1px solid #999">
-                <textarea style="height: 100%;width:94%;margin-left: 3%;font-size: 1.4em" placeholder="可输入备注信息"></textarea>
+            <div style="width: 100%;position: absolute;bottom: 40px;height: 14.5%;padding-top:2%;background-color: #f1f1f1;border-top: 1px solid #d4d4d4">
+                <textarea style="height: 100%;width:94%;margin-left: 3%;font-size: 1.4em;border: 0px;background-color: #FFFFFF;outline: none" placeholder="可输入备注信息"></textarea>
             </div>
             <div class="footer_design"><img src="{{ asset('Images/voice_2.png') }}"><img src="{{ asset('Images/picture.png') }}"></div>
         </div>
@@ -886,24 +1086,58 @@
             <span>蓝牙连续标注<label><input class="mui-switch" type="checkbox"></label></span>
         </div>
     </div>
-@endsection
+</div>
+</body>
+    <script type="text/javascript" src="{{ asset('/Js/jquery.cookie.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('Js/jquery.divas-1.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/layer/layer.js') }}"></script>
 
-@section('js')
     <script>
-        var info = {"customer_id":-1,"theme_id":-1,"match_id":-1,"room_id":-1};
+        var info = {'prefix':false,'customer_id':false,'theme_id':false,'match_id':false,'room_id':false};
         var sex_headerImg = {
             '0':"{{ asset('Images/woman_header.png') }}",
             '1':"{{ asset('Images/man_header.png') }}"
         };
+        var room_name = null;
         //禁止header切换动画
         $.ui.animateHeaders = false;
         //设置后退按钮文字
         $.ui.backButtonText = " ";
 
-        //量房加载事件
+        //载入量房与随手量
+        canvasInit();
+
         function loadLf() {
+            //量房初始化
             lf.goin();
         }
+
+        function loadSsl() {
+            //随手量初始化
+            ssl.goin();
+        }
+
+        //上传量尺
+        function upload_measure() {
+            var measure_data = info;
+            measure_data['data'] =JSON.parse(sessionStorage.getItem(info.prefix+info.customer_id));
+            $.ajax({
+                url:"{{ url('/upload_measure') }}",
+                type:'post',
+                data:data,
+                success:function (res) {
+                    if(res.status == 1){
+                        layer.msg('量尺上传成功!');
+                    }
+                }
+            });
+        }
+
+        //量房信息列表绑定点击事件
+        $('#room_size>li').on('click',function(){
+            room_name = $(this).find('.log_room_name').text();
+            $.ui.loadContent('#measure_count',false,false,'slide');
+        });
 
         //进入选择房间
         function go_choose_room() {
@@ -914,16 +1148,39 @@
 
         //设置量尺页面header头
         function loadMeasure_log() {
-            var username = $('.customer_on').find('username').text();
+            var username = $('.customer_on .true_name').find('.username').text();
+            $('#room_size>li').on('longTap',edit_room);
             setTimeout(function () {
                 $.ui.setTitle(username);
             },1);
         }
 
+        //弹出提示 是否修改房间
+        function edit_room() {
+            var room_name = $(this).find('.log_room_name').text();
+            $("#afui").popup({
+                title: room_name,
+                cancelText: "修改房间信息",
+                cancelCallback: function () {
+                    $('#afui').popup({
+                        title:'修改房间信息',
+                        message:'<label class="edit_room_name">房间名称:<input name="room_name" type="text"></label><label class="edit_room_type">房间类型:<select><option value="1">主卧室</option></select></label>',
+                        cancelText: "取消",
+                        doneText:'确定'
+                    });
+                },
+                doneText: "删除房间",
+                doneCallback: function () {
+                    console.log("删除");
+                },
+                cancelOnly: false
+            });
+        }
+
         //设置量尺显示页面header头{
         function loadMeasure_count() {
             setTimeout(function () {
-                $.ui.setTitle('aaa');
+                $.ui.setTitle(room_name);
             },1);
         }
 
@@ -973,15 +1230,6 @@
             });
         }
 
-        //退出登录
-        function logout() {
-            $.cookie('user','',{ expires: -1 });
-            $.cookie('user_id','',{ expires: -1 });
-            $.cookie('session_id','',{ expires: -1 });
-            $.cookie('auth_key','',{ expires: -1 });
-            window.location.href='{{ asset("/login") }}';
-        }
-
         //改变footer栏图片
         function change_footer_img() {
             var aa = "{{ asset('Images') }}";
@@ -995,13 +1243,13 @@
         $('input:radio[name=edit_sex]').change(function () {
             $('.sex_true').hide();
             $(this).parent().find('.sex_true').show();
-        });
+        })
 
         //添加临时客户 sex change事件
-        $('input:radio[name=sex]').change(function () {
+        $('input:radio[name=sex]').click(function () {
             $('.sex_true').hide();
             $(this).parent().find('.sex_true').show();
-        });
+        })
 
         //添加临时客户 budget change事件
         $('input:radio[name=edit_budget]').change(function () {
@@ -1022,10 +1270,10 @@
             var sex = $('input[name=sex]:checked').val()
             var address = $('input[name=address]').val();
             var telephone = $('input[name=telephone]').val();
-            var wetchat = $('input[name=wetchat]').val();
+            var wechat = $('input[name=wechat]').val();
             var budget = $('input[name=budget]:checked').val();
             var scheme_time = $('input[name=scheme_time]').val();
-            if(username == '' || address == '' || telephone == '' || wetchat == '' || scheme_time == ''){
+            if(username == '' || address == '' || telephone == '' || wechat == '' || scheme_time == ''){
                 layer.msg('信息需填写完整!', {icon: 5});
                 return false;
             }
@@ -1037,13 +1285,13 @@
             var url = "{{ url('/laoka') }}";
             //window.location.href= url+'?customer_id='+customer_id+'&theme_id='+theme_id+'&match_id='+match_id+'&room_id='+room_id;
             $.ui.loadContent('#lf');
-        });
+        })
 
         //个人中心左侧菜单栏绑定点击事件
-        $('.relay').on('click',show_private);
+        $('.relay').on('click',show_private)
 
         //录音数据,相册左侧菜单栏绑定点击事件
-        $('.relay_data').on('click',locacenter);
+        $('.relay_data').on('click',locacenter)
 
         //录音数据,相册左侧菜单栏点击事件
         function locacenter() {
@@ -1119,15 +1367,20 @@
             }
         }
 
-        //客户详细信息页面 进入量尺/需求确认按钮点击事件
+        //客户详细信息页面 进入量尺/需求确认  按钮点击事件
         function portal() {
             var val = $('.check_on').val();
-            if(val == 2){
-                $.ui.loadContent('#measure_log',false,false,'slide');
+            info.customer_id = $('input[name=customer_id]').val();
+            if(val == 3){
+                info.prefix = 'temporary';
             }else{
-                $.ui.loadContent('#go_measurement',false,false,'slide');
-                info.customer_id = $('input[name=customer_id]').val();
+                info.prefix = 'formal';
+                if(val == 2){
+                    $.ui.loadContent('#measure_log',false,false,'slide');
+                    return false;
+                }
             }
+            $.ui.loadContent('#go_measurement',false,false,'slide');
         }
 
         //客户页面加载触发事件
@@ -1154,7 +1407,6 @@
             var aa = "{{ asset('Images') }}";
             $('#navbar_scheme>img').attr('src',aa+'/t_scheme.png');
             if(!$('.room_on').val()){
-                console.log('start');
                 get_menu(0);
                 get_room(0);
             }
@@ -1164,11 +1416,11 @@
         function loadUser() {
             change_footer_img();
             var aa = "{{ asset('Images') }}";
+            var user_data = '<?php echo $user?>';
             $('#navbar_private>img').attr('src',aa+'/t_private.png');
-            if($.cookie('user')){
+            if(user_data){
+                user_data = JSON.parse(user_data);
                 if(!$('.self_name').text()){
-                    var user_data = JSON.parse($.cookie('user'));
-                    var aa = "{{ asset('Images') }}";
                     var sex = new Array();
                     var brief = user_data.u_id;
                     sex[0] = '女';
@@ -1190,21 +1442,49 @@
                         $('.private_role').text(user_data.group_name);
                         brief += '　'+user_data.group_name;
                     }else{
-                        $('.private_role').text('暂未分配');
-                        brief += '　暂未分配';
+                        $('.private_role').text('暂未提供');
+                        brief += '　暂未提供';
                     }
                     $('.identity').text(brief);
                     if(user_data.sex){
                         $('.private_sex').text(sex[user_data.sex]);
                     }else{
-                        $('.private_sex').text('未知');
+                        $('.private_sex').text('暂未提供');
                     }
                 }
+                $('#p_menu').parent().height($('#p_menu').parent().parent().height());
+                $('#p_menu').parent().css('overflow','auto');
+
+                $("#p_menu").on("swipe",function(){
+                    var event = event || window.event;
+                    var cy = event.touches[0].pageY;
+
+                    $("#p_menu").on("touchmove",function(){
+                        var event = event || window.event;
+                        var my = event.touches[0].pageY;
+                        var offsetC = $("#p_menu").offset();
+                        var juli = Math.floor((my - cy)/8);
+                        if(offsetC.top+juli > 120){
+                            $("#p_menu").offset({top:120,left:offsetC.left});
+                        }else if(offsetC.top+juli<120){
+                            if(offsetC.top < $("#p_menu").parent().height()-$("#p_menu").height()+120 || offsetC.top+juli < $("#p_menu").parent().height()-$("#p_menu").height()+120){
+                                $("#p_menu").offset({top:$("#p_menu").parent().height()-$("#p_menu").height()+120,left:offsetC.left});
+                            }else{
+                                $("#p_menu").offset({top:offsetC.top+juli,left:offsetC.left});
+                            }
+                        }
+                    });
+                    $("#p_menu").on("touchend",function(){
+                        $("#p_menu").off("touchmove");
+                        $("#p_menu").off("touchend");
+                    });
+                });
             }else{
                 window.location.href='{{ url("/login") }}';
             }
         }
 
+        //进入活动中心触发事件
         function loadActivity() {
             change_footer_img();
             var aa = "{{ asset('Images') }}";
@@ -1231,9 +1511,9 @@
                             for(var i=0;i<data.retData.length;i++){
                                 if(pid == 0){
                                     if(i == 0){
-                                        $('.choose>ul').append('<li class="pitch_on" value = "'+ data.retData[i].id+'"><span class="choose_li_header">'+data.retData[i].name+'</span><img src="'+aa+'/'+data.retData[i].cover+'" class=""><img class="badge_img" src="'+aa+'/'+'2x_80.png" ><p class="explain"> <span>设计理念</span>　　'+data.retData[i].explain+'</p></li>');
+                                        $('.choose>ul').append('<li class="pitch_on" value = "'+ data.retData[i].id+'"><span class="choose_li_header">'+data.retData[i].name+'</span><div><img src="'+aa+'/'+data.retData[i].cover+'" class=""><img class="badge_img" src="'+aa+'/'+'2x_80.png" ></div><p class="explain"> <span>设计理念</span>　　'+data.retData[i].explain+'</p></li>');
                                     }else{
-                                        $('.choose>ul').append('<li value="'+ data.retData[i].id+'"><span class="choose_li_header">'+data.retData[i].name+'</span><img src="'+aa+'/'+data.retData[i].cover+'"><img class="badge_img" src="'+aa+'/'+'2x_61.png" ><p class="explain"> <span>设计理念</span>　　'+data.retData[i].explain+'</p></li>');
+                                        $('.choose>ul').append('<li value="'+ data.retData[i].id+'"><span class="choose_li_header">'+data.retData[i].name+'</span><div><img src="'+aa+'/'+data.retData[i].cover+'"><img class="badge_img" src="'+aa+'/'+'2x_61.png" ></div><p class="explain"> <span>设计理念</span>　　'+data.retData[i].explain+'</p></li>');
                                     }
                                 }
                             }
@@ -1288,14 +1568,12 @@
             $('#edit_city').css('display','none');
             $('#edit_districe').css('display','none');
             if(designer && designer !='undefined'){
-                $('#edit_customer').find('input[name=edit_designer]').val(data[designer - 1].id);
-                $('#edit_customer').find('input[name=edit_username]').val(data[designer - 1].username);
-                $('#edit_customer').find('input[name=edit_username]').val(data[designer - 1].username);
-                $('#edit_customer').find('input[name=edit_address]').val(data[designer - 1].address);
-                $('#edit_customer').find('input[name=edit_telephone]').val(data[designer - 1].telephone);
-                $('#edit_customer').find('input[name=edit_telephone]').val(data[designer - 1].telephone);
-                $('#edit_customer').find('input[name=edit_wetchat]').val(data[designer - 1].wetchat);
-                $('#edit_customer').find('input[name=edit_scheme_time]').val(data[designer - 1].scheme_time);
+                $('#edit_customer').find('input[name=edit_designer]').val(data[designer].c_id);
+                $('#edit_customer').find('input[name=edit_username]').val(data[designer].c_name);
+                $('#edit_customer').find('input[name=edit_address]').val(data[designer].complete);
+                $('#edit_customer').find('input[name=edit_telephone]').val(data[designer].c_phone_num);
+                $('#edit_customer').find('input[name=edit_wechat]').val(data[designer].wechat);
+                $('#edit_customer').find('input[name=edit_scheme_time]').val(data[designer].create_date);
                 $('#edit_customer').find('input:radio[name="edit_sex"][value="'+data[designer - 1].sex+'"]').prop("checked",true);
                 $('#edit_customer').find('input:radio[name="edit_sex"][value="'+data[designer - 1].sex+'"]').parent().find('.sex_true').show();;
                 $('#edit_customer').find('input:radio[name="edit_budget"][value="'+data[designer - 1].budget+'"]').prop("checked",true);
@@ -1335,68 +1613,120 @@
                 $('.check_on').removeAttr("class");
                 $(_this).attr('class','check_on');
             }
-            if(val == 3){
-                var url = 'get_customer';
-                var data = {
-                    designer: $.cookie('user_id')
-                };
-                var headers = {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                };
-            }else {
-                var url = 'http://roco.honghaiweb.com/Api/index.php/App/Customer/clientList';
-                var data = {
-                    session_id:$.cookie('session_id'),
-                    auth_key:$.cookie('auth_key')
-                };
-                var headers = '';
-            }
             $.ajax({
-                url: url,
+                url: "{{ url('/get_customer') }}",
                 type: 'POST',
-                data: data,
-                headers: headers,
+                data: {
+                    val:val
+                },
                 success: function (result) {
-                    result = JSON.parse(result);
-                    if (result.status == '101') {
-                        window.location.href = '/login';
-                    }
+                    var aa = "{{ asset('Images/recycle.png') }}";
                     $('.customer_list').html("");
-                    if (result.status && result.status != 102 && result.retData.length > 0) {
-                        sessionStorage.setItem('customers', JSON.stringify(result.retData));
+                    result = jQuery.parseJSON(result);
+                    console.log(result);
+                    if(result.status == '101'){
+                        window.location.href="{{ url('/') }}";
+                    }
+                    if (result.status == 1) {
+                        sessionStorage.setItem('customers', JSON.stringify(result.retData.data));
                         if (val == 1) {
-                            for (var i = 0; i < result.retData.length; i++) {
-                                if(i == 0){
-                                    customer_details(i,val);
-                                }
-                                if(!result.retData[i].measure_time){
-                                    $('.customer_list').append('<li value="'+i+'"><div class="thumbnail_small"><img src="'+sex_headerImg[result.retData[i].sex]+'"></div><div class="true_name"> <span class="username">'+result.retData[i].username+'</span><span class="contact">'+result.retData[i].telephone+'</span></div></li>');
+                            var j = 0;
+                            for (var i = 0; i < result.retData.data.length; i++) {
+                                if(!result.retData.data[i].plan_measure_date){
+                                    if(j == 0){
+                                        j++;
+                                        customer_details(i,val);
+                                    }
+                                    $('.customer_list').append('<li value="'+i+'"><div class="thumbnail_small"><img src="'+sex_headerImg[0]+'"></div><div class="true_name"> <span class="username">'+result.retData.data[i].c_name+'</span><span class="contact">'+result.retData.data[i].c_phone_num+'</span></div></li>');
                                 }
                             }
-                        } else if (val == 2) {
-                            for (var i = 0; i < result.retData.length; i++) {
-                                if(i == 0){
-                                    customer_details(i,val);
-                                }
-                                if(result.retData[i].measure_time){
-                                    $('.customer_list').append('<li value="'+i+'"><div class="thumbnail_small"><img src="'+sex_headerImg[result.retData[i].sex]+'"></div><div class="true_name"> <span class="username">'+result.retData[i].username+'</span><span class="contact">'+result.retData[i].telephone+'</span></div></li>');
+                        }else if (val == 2) {
+                            var j = 0;
+                            for (var i = 0; i < result.retData.data.length; i++) {
+                                if(result.retData.data[i].plan_measure_date){
+                                    if(j == 0){
+                                        j++;
+                                        customer_details(i,val);
+                                    }
+                                    $('.customer_list').append('<li value="'+i+'"><div class="thumbnail_small"><img src="'+sex_headerImg[0]+'"></div><div class="true_name"> <span class="username">'+result.retData.data[i].c_name+'</span><span class="contact">'+result.retData.data[i].c_phone_num+'</span></div></li>');
                                 }
                             }
                         } else if (val == 3) {
-                            for (var i = 0; i < result.retData.length; i++) {
+                            for (var i = 0; i < result.retData.data.length; i++) {
                                 if(i == 0){
                                     customer_details(i,val);
                                 }
-                                $('.customer_list').append('<li value="'+i+'"><div class="thumbnail_small"><img src="'+sex_headerImg[result.retData[i].sex]+'"></div><div class="true_name"> <span class="username">'+result.retData[i].username+'</span><span class="contact">'+result.retData[i].telephone+'</span></div></li>');
+                                $('.customer_list').append('<li value="'+i+'"><div class="thumbnail_small"><img src="'+sex_headerImg[result.retData.data[i].sex]+'"></div><div class="true_name"> <span class="username">'+result.retData.data[i].c_name+'</span><span class="contact">'+result.retData.data[i].c_phone_num+'</span></div><button class="check_to_del"><img src="'+aa+'"></button></li>');
                             }
                         }
+                        //客户列表绑定左滑动事件
+                        $('.customer_list>li:not(.loss_customer)').bind('swipeLeft',del_customer);
+                        //删除按钮点击事件
+                        $('.check_to_del').on('click',del_customer_do);
+                        //客户列表点击事件
                         $('.customer_list>li').on('click',show_customer);
+
                         $('.customer_list>:first').attr('class','customer_on');
                     }else{
-                        $('.customer_list').append('<li class="loss_customer">暂无客户!</li>');
+                        $('.customer_list').append('<li class="loss_customer">'+result.retErr+'</li>');
                         $('.data_list').css('display','none');
                         $('.data_center').css('display','none');
                         $('.go_measure').css('display','none');
+                    }
+                }
+            });
+
+            //给客户列表绑定滑动事件
+            $('#customer_list').on("touchstart",function(){
+                var event = event || window.event;
+                var cy = event.touches[0].pageY;
+
+                $("#customer_list").on("touchmove",function(){
+                    var event = event || window.event;
+                    var my = event.touches[0].pageY;
+                    var offsetC = $("#customer_list").offset();
+                    var juli = Math.floor((my - cy)/8);
+                    console.log(offsetC.top);
+                    if(offsetC.top+juli > 200){
+                        $("#customer_list").offset({top:200,left:offsetC.left});
+                    }else if(offsetC.top+juli<0){
+                        if(offsetC.top < $("#customer_list").parent().height()-$("#customer_list").height() || offsetC.top+juli < $("#customer_list").parent().height()-$("#customer_list").height()){
+                            $("#customer_list").offset({top:$("#customer_list").parent().height()-$("#customer_list").height()+120,left:offsetC.left});
+                        }else{
+                            $("#customer_list").offset({top:offsetC.top+juli,left:offsetC.left});
+                        }
+                    }
+                });
+                $("#customer_list").on("touchend",function(){
+                    $("#customer_list").off("touchmove");
+                    $("#customer_list").off("touchend");
+                });
+            });
+        }
+
+        //客户列表滑动事件
+        function del_customer() {
+            $('.is_del_customer').removeClass('is_del_customer');
+            $(this).addClass('is_del_customer');
+        }
+
+        //删除客户事件
+        function del_customer_do() {
+            var _this = this;
+            $.ajax({
+                url:'del_customer',
+                data:{
+                    id:$(this).parent().val()
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                },
+                type:'post',
+                success:function (data) {
+                    if(data){
+                        $(_this).parent().remove();
+                    }else{
+                        layer.msg('删除失败!', function(){});
                     }
                 }
             });
@@ -1405,8 +1735,9 @@
         //显示客户详细信息
         function customer_details(i,val) {
             var data = JSON.parse(sessionStorage.getItem('customers'));
+            console.log(data[i]);
             if(data[i]){
-                $('.header_img>img').attr('src',sex_headerImg[data[i].sex]);
+                $('.header_img>img').attr('src',sex_headerImg[data[i].is_paid]);
                 if(val == 2){
                     $('.go_measure>a').text('需求核对');
                 }else{
@@ -1423,15 +1754,15 @@
                 budget[4] = '18-25万';
                 budget[5] = '25万以上';
                 budget[6] = '其它';
-                $('.data_list').find('input[name=customer_id]').val(data[i]['id']);
-                $('.data_list>table>tbody').find('tr:eq(0)').find('td').text(data[i]['username']);
+                $('.data_list').find('input[name=customer_id]').val(data[i].c_id);
+                $('.data_list>table>tbody').find('tr:eq(0)').find('td').text(data[i].c_name);
                 $('.data_list>table>tbody').find('tr:eq(1)').find('td').text(sex[data[i]['sex']]);
                 $('.data_list>table>tbody').find('tr:eq(2)').find('td').text(data[i]['address']);
-                $('.data_list>table>tbody').find('tr:eq(3)').find('td').text(data[i]['telephone']);
-                $('.data_list>table>tbody').find('tr:eq(4)').find('td').text(data[i]['wetchat']);
+                $('.data_list>table>tbody').find('tr:eq(3)').find('td').text(data[i].c_phone_num);
+                $('.data_list>table>tbody').find('tr:eq(4)').find('td').text(data[i]['wechat']);
                 $('.data_list>table>tbody').find('tr:eq(5)').find('td').text(rule_time);
                 $('.data_list>table>tbody').find('tr:eq(6)').find('td').text(budget[data[i]['budget']]);
-                $('.data_list>table>tbody').find('tr:eq(7)').find('td').text(data[i]['scheme_time']);
+                $('.data_list>table>tbody').find('tr:eq(7)').find('td').text(data[i]['plan_measure_date']);
 
                 $('.data_list').css('display','block');
                 $('.data_center').css('display','block');
@@ -1442,12 +1773,20 @@
         //客户点击事件
         function show_customer() {
             var i = $(this).val();
-            var val = $('.check_on').attr('value');
-            if(i != $('.customer_on').val()){
-                $('.customer_on').removeClass();
-                $(this).attr('class','customer_on');
+            var a = $('.is_del_customer').val();
+            if(a && a == i){
+                return false;
             }
-            customer_details(i,val);
+            if(a && a != i){
+                $('.is_del_customer').removeClass('is_del_customer');
+            }else{
+                var val = $('.check_on').attr('value');
+                if(i != $('.customer_on').val()){
+                    $('.customer_on').removeClass();
+                    $(this).attr('class','customer_on');
+                }
+                customer_details(i,val);
+            }
         }
 
         //风格页面获取风格主题列表
@@ -1635,7 +1974,7 @@
             $(this).attr('class','style_on');
             show_menu($(this).val());
         }
-        
+
         //进入量尺页面 主题点击事件
         function theme_click() {
             if($(this).val() == $('.left').find('.theme_on').val()){
@@ -1646,7 +1985,7 @@
             $('.screen>ul').html('');
             show_collocation($(this).val(),1);
         }
-        
+
         //进入量尺页面  显示搭配
         function show_collocation(theme_id) {
             $.ajax({
@@ -1697,9 +2036,9 @@
                 if(newpass != confirmpass){
                     layer.msg(" 两次输入的密码不一致! (ง •̀_•́)ง", {icon: 5});
                 }
-                $.post('http://roco.honghaiweb.com/Api/index.php/App/Base/setUserInfo',{password:oldpass,newpass:newpass,re_newpass:confirmpass,session_id:$.cookie('session_id'), auth_key:$.cookie('auth_key')},function(data){
+                $.post("{{ url('/change_password') }}",{password:oldpass,newpass:newpass,re_newpass:confirmpass},function(data){
+                    data = JSON.parse(data);
                     if(data.status == 1){
-                        $.cookie('auth_key',data.retData);
                         window.history.back(-1);
                         layer.msg(' 修改密码成功!', {icon: 6});
                         $('input[name=oldpass]').val('');
@@ -1843,5 +2182,42 @@
                 $('#edit_districe').css('display','none');
             }
         }
+        
+        //添加客户
+        function add_formal_customer() {
+            $.ajax({
+                url:"http://roco.honghaiweb.com/Api/index.php/App/Customer/addClient",
+                type:'POST',
+                data: {
+                    act_id: 323,
+                    act_name:'12345678',
+                    session_id:$.cookie('session_id'),
+                    auth_key:$.cookie('auth_key')
+                },
+                success:function(data){
+                    data = JSON.parse(data)
+                    alert(data.retErr);
+                }
+            });
+        }
+
+        //上传文件到服务器
+        function upload_fiel_do() {
+            $.ajax({
+                ulr:'http://roco.honghaiweb.com/Api/index.php/App/Customer/addClient',
+                type:'POST',
+                data: {
+                    session_id:$.cookie('session_id'),
+                    auth_key:$.cookie('auth_key')
+                },
+                success:function (data) {
+                    console.log(data);
+                },
+                error:function () {
+                    alert('aaa');
+                    return false;
+                }
+            });
+        }
     </script>
-@endsection
+</html>

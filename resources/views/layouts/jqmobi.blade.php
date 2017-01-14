@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<!--HTML5 doctype-->
 <html>
-
 <head>
     <title>ROCO劳卡衣柜</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -51,6 +49,9 @@
     <script src="{{ asset('lf/js/lf_wall.js') }}"></script>
     <script src="{{ asset('lf/js/lf_door.js') }}"></script>
     <script src="{{ asset('lf/js/lf_furnit.js') }}"></script>
+    <script src="{{ asset('lf/js/ssl.js') }}"></script>
+    <script src="{{ asset('lf/js/ssl_line.js') }}"></script>
+    <script src="{{ asset('lf/js/ssl_text.js') }}"></script>
 
 
     <script type="text/javascript" src="{{ asset('/Jqmobi/jq.appframework.js') }}"></script>

@@ -80,35 +80,40 @@
         }
         .log_form label{
             background-color: #A29F98;
-            border: 1px solid #A29F98;
             opacity:1;
-            height: 34px;
-            border-radius:5px;
+            height: 40px;
             width: 90%;
             margin-top: 5px;
             margin-bottom: 18px;
             text-align: left;
             vertical-align:middle;
-            padding-top: 4px;
-            padding-bottom: 4px;
+            border-radius:5px;
         }
         .log_form label img{
-            height: 90%;
+            height: 56%;
             margin-left: 10px;
             margin-right: 10px;
             vertical-align:middle;
             opacity:1 !important;
             z-index: 999;
+            width: 16px;
         }
-        input{
-            height: 24px;
-            background-color: #A29F98;
-            border: 1px solid #A29F98;
+        #login input{
+            height: 32px;
+            margin-top: 4px;
+            width: 80%;
+            background: none;
+            border: none;
+            border-radius: 0px;
+            padding-left: 2%;
             border-left: 1px solid #c3c1bd;
+            outline: none;
+            -webkit-tap-highlight-color:rgba(255,0,0,0);
         }
+        input:focus { outline: none; }
         .verify{
             display: block;
-            height: 34px;
+            height: 40px;
             border-radius:5px;
             margin-top: 5px;
             margin-bottom: 15px;
@@ -118,7 +123,7 @@
         .verify label{
             background-color: #444444;
             border: 1px solid #444444;
-            height: 34px;
+            height: 40px;
             border-radius:5px;
             width: 140px;
             margin-top: 0px;
@@ -134,13 +139,14 @@
         }
         .verify label input{
             background-color: #444444;
-            border: 0px solid #444444;
-            height: 100%;
+            border: 0px !important;
+            height: 100% !important;
+
             width: 70%;
             margin-bottom: 0px;
-            margin-top: 0px;
+            margin-top: 0px !important;
             margin-left: 15%;
-            font-size: 20px;
+            font-size: 1em;
         }
         ::-webkit-input-placeholder {
             color:#FFFFFF;
@@ -155,35 +161,35 @@
             line-height: 40px;
             font-size: 1.1em;
             color: #FFFDFE;
-            margin-top: 15%;
+            margin-top: 10%;
             position: relative;
             font-weight: normal;
             top: -204px;
+            width: 100%;
+            border: none;
         }
-        .login_to:hover{
-            text-decoration:none;
-            border: 1px solid #FFFFFF;
-            color: #FFFDFE;
-        }
-        .bottom{
-            display: block;
-            margin-top: 5%;
-            position: relative;
-            top: -204px;
-        }
-        .bottom a:hover{
-            color: #FFFDFE;
-            text-decoration:none;
-        }
-        .reset{
-            display: inline-block;
-            float: left;
-            font-size: 0.5em;
-            border-bottom: 1px solid #FFFDFE;
-            color: #FFFDFE;
-            height: 18px;
-            line-height: 18px;
-        }
+
+        /*.bottom a:hover{*/
+            /*color: #FFFDFE;*/
+            /*text-decoration:none;*/
+        /*}*/
+
+        /*.bottom{*/
+            /*display: block;*/
+            /*margin-top: 5%;*/
+            /*position: relative;*/
+            /*top: -204px;*/
+        /*}*/
+        /*.reset{*/
+            /*display: inline-block;*/
+            /*float: left;*/
+            /*font-size: 0.8em;*/
+            /*border-bottom: 1px solid #FFFDFE;*/
+            /*color: #FFFDFE;*/
+            /*height: 18px;*/
+            /*line-height: 18px;*/
+        /*}*/
+
     </style>
 </head>
 <body>
@@ -191,28 +197,24 @@
         <div class="box">
             <image style="width: 70%" src="{{ asset('Images/logo.png') }}"></image>
             <div class="floor"></div>
-            <div class="log_form">
-                <form method="post" action="{{ url('ces') }}" id="login">
-                    {{ csrf_field() }}
-                    <input type="hidden"  id="islonin" value="false" />
-                    <label>
-                        <img src="{{ asset('Images/user.png') }}"><input class="text" type='text' name="username" id="username">
+            <form method="post" action="{{ url('/do_login') }}" id="login" onsubmit="return validate_form_login()">
+                <div class="log_form">
+                    <label for="username">
+                        <img src="{{ asset('Images/user.png') }}"><input class="text" type='text' name="username" id="username" value="{{ old('username') }}">
                     </label>
-                    <label>
-                        <img src="{{ asset('Images/pass.png') }}"><input class="text" type='password' name="password" class="password">
+                    <label for="password">
+                        <img src="{{ asset('Images/pass.png') }}"><input class="text" type='password' name="password" class="password" value="{{ old('password') }}">
                     </label>
                     <p class="verify">
-                        <label>
+                        <label for="verify">
                             <input class="verify" placeholder="输入验证码" type='text' name="verify">
                         </label>
-                        <img id="verify" src="{{ url('captcha/mews') }}"  onclick="this.src='{{ url('captcha/mews') }}?r='+Math.random();" alt="验证码">
+                        <img id="verify" src=""  onclick="show_captcah()" alt="验证码">
                     </p>
-                </form>
-            </div>
-            <a class="login_to" onclick = 'validate_form_login()' >登 录</a>
-            <p class="bottom">
-                <a class="reset"> 忘记密码?</a>
-            </p>
+
+                </div>
+                <button class="login_to" type="submit">登 录</button>
+            </form>
         </div>
     </div>
 </body>
@@ -221,12 +223,9 @@
 <script type="text/javascript" src="{{ asset('/layer/layer.js') }}"></script>
 <script>
     $.cookie('sw',window.screen.width);
-    @if($errors->has('name'))
-    layer.msg("  {{ $errors->first('name') }} (ง •̀_•́)ง", {icon: 5});
-    @elseif($errors->has('email'))
-    layer.msg("  {{ $errors->first('email') }} (ง •̀_•́)ง", {icon: 5});
-    @elseif($errors->has('password'))
-    layer.msg("  {{ $errors->first('password') }} (ง •̀_•́)ง", {icon: 5});
+    show_captcah()
+    @if($errors->first())
+           layer.msg("  {{ $errors->first() }} (ง •̀_•́)ง", {icon: 5});
     @endif
 
     function validate_form_login()
@@ -239,45 +238,23 @@
         {
             return false;
         }
-        if(verify.length != 4)
-        {
+        if(verify.length != 4) {
             layer.msg(" 验证码错误! (ง •̀_•́)ง", {icon: 5});
             return false;
-        }else{
-            $.ajax({
-                url:"{{ url('captcha/check') }}",
-                headers:{
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                },
-                type:'POST',
-                data:{
-                    verify:verify
-                },
-                success:function (data) {
-                    if(data == 1){
-                        <!-- 登陆接口 -->
-                        $.post('http://roco.honghaiweb.com/Api/index.php/App/Base/login',{username:username,password:password},function (data) {
-                            if(data.status){
-                                $.cookie('user',JSON.stringify(data.retData));
-                                $.cookie('user_id',data.retData.u_id);
-                                $.cookie('session_id',data.retData.session_id);
-                                $.cookie('auth_key',data.retData.auth_key);
-                                window.location.href='{{ url("/") }}';
-                            }else{
-                                layer.msg(data.retErr + "! (ง •̀_•́)ง", {icon: 5});
-                                $('#verify').attr('src','{{ url('captcha/mews') }}?r='+Math.random());
-                                $('input[name=verify]').val('');
-                                $('input[name=password]').val('');
-                            }
-                        })
-                    }else{
-                        layer.msg(" 验证码错误! (ง •̀_•́)ง", {icon: 5});
-                        $('input[name=verify]').val('');
-                        $('#verify').attr('src','{{ url('captcha/mews') }}?r='+Math.random());
-                    }
-                }
-            });
         }
+        return true;
+    }
+
+    //验证码
+    function show_captcah() {
+        $.ajax({
+            url:"{{ url('/captcha/mews') }}",
+            type:'POST',
+            data:'',
+            success:function (data) {
+                $('#verify').attr('src',data);
+            }
+        });
     }
 </script>
 </html>

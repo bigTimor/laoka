@@ -74,7 +74,7 @@
             var markup;
             var noop=function(){};
             if (typeof opts === "string") {
-                markup = $(markStart + opts + "<a href='javascript:;' class='cancel'>Cancel</a>" + markEnd);
+                markup = $(markStart + opts + markEnd);
             } else if (typeof opts === "object") {
                 markup = $(markStart + markEnd);
                 var container = $(markup.children().get(0));

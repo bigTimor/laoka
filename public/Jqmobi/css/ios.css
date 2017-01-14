@@ -101,10 +101,6 @@
     background-image:linear-gradient(to bottom, #9CABC0 0%, #6E84A2 50%, #476999 51%);
 }
 
-#afui.ios .header .button.pressed {
-    background-image:linear-gradient(to bottom, #6E84A2 0%, #476999 50%, #274979 51%);
-}
-
 #afui.ios .footer .button {
     color:#fff;
     text-shadow:0 -1px 0 #333;
@@ -118,15 +114,15 @@
     background-image:linear-gradient(to bottom, #444 0%, #222 50%, #000 51%);
 }
 
-#afui.ios #aside_menu .list li, 
-#afui.ios #aside_menu .list .divider, 
-#afui.ios #aside_menu .list li:first-child, 
+#afui.ios #aside_menu .list li,
+#afui.ios #aside_menu .list .divider,
+#afui.ios #aside_menu .list li:first-child,
 #afui.ios #aside_menu  .list li:last-child,
-#afui.ios #menu .list li, 
-#afui.ios #menu .list .divider, 
-#afui.ios #menu .list li:first-child, 
+#afui.ios #menu .list li,
+#afui.ios #menu .list .divider,
+#afui.ios #menu .list li:first-child,
 #afui.ios #menu  .list li:last-child {
-    border-color:#101012;
+    border-color:#FFFfff;
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
 }
@@ -143,13 +139,10 @@
 }
 
 #afui.ios .afPopup {
-    border: solid 2px #fff;
-    -webkit-box-shadow: 0px 4px 6px #555, 0 0 20px rgba(0,0,0,0.5);
-    -webkit-border-radius: 10px;
+    border: 0px;
     border-radius:10px;
     padding: 0;
-    background: #1b294b;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#626c82), to(#1b294b));
+    background: #FFFfff;
 }
 
 #afui.ios .afPopup >* {

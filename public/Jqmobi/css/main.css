@@ -82,7 +82,10 @@ body {
 
 
 
-#afui .afScrollPanel { width:100%; min-height:100%; }
+#afui .afScrollPanel {
+    width:100%;
+    min-height:100%;
+}
 
 #afui {
     position:absolute;
@@ -155,13 +158,14 @@ body {
     height:44px;
     font-size:18px;
     font-weight:bold;
-    left:27.5%;
     color:inherit;
     text-shadow:rgba(0,0,0,0.8) 0 -1px 0;
     text-align:center;
     white-space:nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    position: absolute;
+    top:0px;
 } /* This is text that appears in the header at the top of the screen */
 
 

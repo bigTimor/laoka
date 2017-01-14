@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Middleware;
-
 use Closure;
 
 class LoginMiddleware
@@ -15,7 +13,7 @@ class LoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(!empty($_COOKIE['user']) && json_decode($_COOKIE['user'])->u_id){
+        if(session()->get('user_id')){
             return $next($request);
         }
         return redirect()->guest('login');

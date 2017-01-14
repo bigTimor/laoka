@@ -153,8 +153,6 @@
     height:23px;
 }
 
-#afui label { color:inherit; }
-
 #afui input[type="radio"]:checked+label:before,#afui input[type="checkbox"]:checked+label:before {
     background: #33B5E5;
 }
@@ -267,8 +265,6 @@
 
 #afui .afPopup {
     border: solid 1px #33B5E5;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
     background:inherit;
     color:inherit;
 }

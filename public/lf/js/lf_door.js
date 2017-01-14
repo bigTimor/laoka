@@ -7,14 +7,12 @@ var doorObj = function(){
 	this.attr = [];		// 门的属性
 	// attr表
 	// 		0-单开门
-	// 			name —— 名称
 	// 			direction  —— 门的方向(左右)，默认为0
 	// 			around  —— 门的朝向(内外)，默认为0
 	// 			width —— 门的宽度
 	// 			height —— 门的高度
 	// 			
 	// 		1-飘窗
-	// 			name —— 名称
 	// 			height —— 高度，默认为1800
 	// 			width —— 宽度，默认为lf_objs.doorIn.length
 	// 			feet —— 离地高，默认为400
@@ -22,7 +20,6 @@ var doorObj = function(){
 	// 			radius —— 侧边角度，默认为90
 	// 		
 	// 		2-转角飘窗
-	// 			name —— 名称
 	// 			height —— 高度，默认为1800
 	// 			feet —— 离地高，默认为400
 	// 			depth —— 飘出深度，默认为lf_objs.doorIn.length*0.4
@@ -30,52 +27,43 @@ var doorObj = function(){
 	// 			rightW —— 右边宽度，默认为lf_objs.doorIn.length
 	// 		
 	// 		3-普通窗
-	// 			name —— 名称
 	// 			height —— 高度，默认为1800
 	// 			width —— 高度，默认为lf_objs.doorIn.length
 	// 			feet —— 离地高，默认为400
 	// 		
 	// 		4-阳台门
-	// 			name —— 名称
 	// 			height —— 高度，默认为2000
 	// 			width —— 高度，默认为lf_objs.doorIn.length
 	// 			
 	// 		5-柱
-	// 			name —— 名称
 	// 			height —— 高度，默认为400
 	// 			width —— 高度，默认为lf_objs.doorIn.length/3
 	// 			
 	// 		6-梁
-	// 			name —— 名称
 	// 			width —— 宽度,默认为lf_objs.doorIn.length/5
 	// 			metope —— 离墙距离，默认为1252
 	// 			feet ——	离地高，默认为2600
 	// 			
 	// 		7-墙洞
-	// 			name —— 名称
 	// 			width —— 宽度,默认为lf_objs.doorIn.length/2
 	// 			height —— 高度，默认为2100
 	// 			feet ——	离地高，默认为0
 	// 			
 	// 		8-转角窗
-	// 			name —— 名称
 	// 			height —— 高度，默认为1800
 	// 			feet —— 离地高，默认为400
 	// 			leftW —— 左边宽度，默认为lf_objs.doorIn.length
 	// 			rightW —— 右边宽度，默认为lf_objs.doorIn.length 			
 	// 
 	// 		9-双开门
-	// 			name —— 名称
 	// 			height —— 高度，默认为2000
 	// 			width —— 宽度，默认为lf_objs.doorIn.length*2
 	// 			
 	// 		10-推拉门
-	// 			name —— 名称
 	// 			height —— 高度，默认为2000
 	// 			width —— 宽度，默认为lf_objs.doorIn.length
 	// 			
 	// 		11-折叠门
-	// 			name —— 名称
 	// 			height —— 高度，默认为2000
 	// 			width —— 宽度，默认为lf_objs.doorIn.length
 					

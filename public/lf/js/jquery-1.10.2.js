@@ -8704,6 +8704,7 @@ if ( xhrSupported ) {
 					// This may raise an exception which is actually
 					// handled in jQuery.ajax (so no try/catch here)
 					xhr.send( ( s.hasContent && s.data ) || null );
+
 					// Listener
 					callback = function( _, isAbort ) {
 						var status, responseHeaders, statusText, responses;

@@ -238,14 +238,12 @@ class Captcha
         {
             $this->image = $this->canvas;
         }
-
         if ($this->contrast != 0)
         {
             $this->image->contrast($this->contrast);
         }
 
         $this->text();
-
         $this->lines();
 
         if ($this->sharpen)
@@ -260,7 +258,6 @@ class Captcha
         {
             $this->image->blur($this->blur);
         }
-
         return $this->image->response('png', $this->quality);
     }
 
@@ -405,7 +402,6 @@ class Captcha
         {
             return false;
         }
-
         $key = $this->session->get('captcha.key');
 
         if ( ! $this->session->get('captcha.sensitive'))

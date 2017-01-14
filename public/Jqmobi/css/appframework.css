@@ -2,10 +2,6 @@
 
  */
 
-@-ms-viewport {
-  width: device-width;
-}
-
 #afui {
     background:white;
     color:#53575E;
@@ -132,7 +128,12 @@
 #afui .panel, #afui #modalContainer, #afui #modal {
     color:inherit;
     background:inherit;
+
 }
+/*#afui .panel .shadow private_user{*/
+    /*!*width:1000px;*!*/
+    /*background-color: red;*/
+/*}*/
 
 #afui .panel h2 { color:#0088D1;}
 
@@ -286,9 +287,9 @@
 }
 
 #afui .afPopup {
-    border: solid 1px #33B5E5;
+    border: none;
     -webkit-border-radius: 5px;
-    border-radius: 5px;
+    border-radius: 15px;
     background:inherit;
     color:inherit;
 }

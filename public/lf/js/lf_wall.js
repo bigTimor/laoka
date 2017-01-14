@@ -69,7 +69,9 @@ wallObj.prototype.darw = function(){
 		ctx1.closePath();
 		ctx1.fillStyle = this.fillColor;
 		ctx1.fill();
+		// 如果墙体数组为空，才进行以下操作
 		if(this.walls.length<=0){
+			// 将基础端点的坐标push到墙体数组中
 			for(var i=1;i<=this.num;i++){
 				var sx = this.dot.x[i-1],
 					sy = this.dot.y[i-1],
@@ -80,30 +82,23 @@ wallObj.prototype.darw = function(){
 					ny = this.dot.y[0];
 				}
 				var arr = {x:[sx,nx],y:[sy,ny],w:[0,0]};
-
-				//保存直线参数			
-				// if((arr.x[0]-arr.x[1])==0){
-				// 	var aaa=false;
-				// 	var bbb=arr.x[1];//x=bbb;
-				// }else if((arr.y[0]-arr.y[1])==0){
-				// 	var aaa=0;
-				// 	var bbb=arr.y[1];//y=aaa;
-				// }else{
-				// 	var aaa=(arr.y[0]-arr.y[1])/(arr.x[0]-arr.x[1]);
-				// 	var bbb=arr.y[1]-aaa*arr.x[1];
-				// }
-				// arr.ab = {a:aaa,b:bbb}
-
-				
-
 				this.walls.push(arr);
 			}
+
+			// 将基础端点数组备份一份，用于做缩放的基准
+			for(var j=0;j<this.num;j++){
+				lf.config.original.x.push(this.dot.x[j]);
+				lf.config.original.y.push(this.dot.y[j]);
+			}
+
+
 			lf.config.procedure = 1;
 			lf.procedure_show();
 			lf.btn_show("#lf_move");
 
 			curObj = {};
 		}
+
 		this.darwWall();
 
 		if(lf.config.ruler)

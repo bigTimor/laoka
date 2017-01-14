@@ -10,17 +10,19 @@ var ctx2; 	//用于存放第二个canvas对象的上下文
 var curObj={};	//用于存放被选中的对象
 
 
-$(function(){
+// $(function(){
+//
+// 	// 绑定入口事件，
+// 	$("#intoBox>a").on("touchstart",entry);
+//
+// 	canvasInit();
+//
+// });
 
-	// 绑定入口事件，
-	$("#intoBox>a").on("touchstart",entry);
-
-
-	// 直接加载量房，测试用
-	// lf.goin();
-	// ssl.goin();
-
-});
+function canvasInit(){
+	lf.init();
+	ssl.init();
+}
 
 // 点击入口
 function entry(){
@@ -30,13 +32,13 @@ function entry(){
 	$("#selectFN").fadeOut("fast",function(){
 		switch(id){
 			case "into_lf":
-				lf.goin();
 				$("#lf").fadeIn();
+				lf.goin();
 				break;
 
 			case "into_ssl":
-				ssl.goin();
 				$("#ssl").fadeIn();
+				ssl.goin();
 				break;
 
 			default:break;

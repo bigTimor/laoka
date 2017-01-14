@@ -15,11 +15,9 @@
 
 .afPopup {
     display: block;
-    width: 280px;
+    width: 100%;
     float:left;
     border: solid 1px #72767b;
-    -webkit-border-radius: 10px;
-    border-radius:10px;
     padding: 10px;
     opacity: 1;
     -webkit-transform: scale(1);

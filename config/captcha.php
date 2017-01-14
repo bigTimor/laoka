@@ -45,7 +45,7 @@ return [
     'common' => [
         'length'    => 4,
         'width'     => 100,
-        'height'    => 34,
+        'height'    => 40,
         'bgColor'   => '#ffffff',
         'bgImage'   => false,
     ]

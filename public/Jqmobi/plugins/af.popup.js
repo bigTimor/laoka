@@ -97,7 +97,6 @@
             show: function () {
                 var self = this;
                 var markup = "<div id='" + this.id + "' class='afPopup hidden "+ this.addCssClass + "'>"+
-                            "<header>" + this.title + "</header>"+
                             "<div>" + this.message + "</div>"+
                             "<footer>"+
                                  "<a href='javascript:;' class='" + this.cancelClass + "' id='cancel'>" + this.cancelText + "</a>"+
@@ -174,8 +173,11 @@
             positionPopup: function () {
                 var popup = $.query("#" + this.id);
 
-                popup.css("top", ((window.innerHeight / 2.5) + window.pageYOffset) - (popup[0].clientHeight / 2) + "px");
-                popup.css("left", (window.innerWidth / 2) - (popup[0].clientWidth / 2) + "px");
+                popup.css("top", '44px');
+                popup.css("left", '0px');
+
+                // popup.css("top", ((window.innerHeight / 2.5) + window.pageYOffset) - (popup[0].clientHeight / 2) + "px");
+                // popup.css("left", (window.innerWidth / 2) - (popup[0].clientWidth / 2) + "px");
             }
         };
 
